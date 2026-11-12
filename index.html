@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#6752b5">
+  <meta name="description" content="Tự học Microsoft Access qua thư viện tương tác. Khám phá bảng, khóa chính, khóa ngoại và quan hệ, vượt checkpoint và nhận chứng chỉ.">
+  <title>Thư viện dữ liệu · Học Microsoft Access</title>
+  <link rel="icon" href="assets/logo_lsts.png">
+  <link rel="stylesheet" href="style.css">
+  <script src="data.js" defer></script>
+  <script src="assets/access/photos.js" defer></script>
+  <script src="progress.js" defer></script>
+  <script src="assets/boss3d.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Đến nội dung học</a>
+  <header class="site-header">
+    <a class="brand" href="#" aria-label="Thư viện dữ liệu, về bài đang học">
+      <img src="assets/logo_lsts.png" width="44" height="44" alt="Trường Đinh Thiện Lý">
+      <span><strong>Thư viện dữ liệu</strong><small>Microsoft Access · Lớp 11</small></span>
+    </a>
+    <div id="identity-bar"></div>
+  </header>
+  <div id="storage-warning" role="status" hidden></div>
+  <div id="app"></div>
+  <div id="toast" role="status" aria-live="polite"></div>
+  <dialog id="image-dialog" aria-labelledby="image-title">
+    <div class="dialog-bar"><h2 id="image-title">Ảnh thao tác Access</h2><div class="image-actions"><button type="button" id="image-actual" aria-pressed="false">Xem 100% điểm ảnh</button><button type="button" data-close="image-dialog" aria-label="Đóng ảnh">Đóng ×</button></div></div>
+    <div class="image-scroll"><img id="image-full" alt=""></div>
+    <p id="image-caption"></p>
+  </dialog>
+  <dialog id="certificate-dialog" aria-labelledby="certificate-title">
+    <div class="dialog-bar"><h2 id="certificate-title">Chứng chỉ hoàn thành</h2><button type="button" data-close="certificate-dialog" aria-label="Đóng chứng chỉ">Đóng ×</button></div>
+    <canvas id="certificate-canvas" width="2400" height="1500" role="img" aria-label="Chứng chỉ hoàn thành với họ tên và lớp"></canvas>
+    <div class="certificate-actions"><p>Em có thể tải lại chứng chỉ sau khi mở lại hồ sơ trên máy này.</p><button class="primary" id="download-certificate" type="button">Tải chứng chỉ PNG</button></div>
+  </dialog>
+</body>
+</html>

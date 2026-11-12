@@ -3,12 +3,12 @@
 Web tự học của Trường THCS và THPT Đinh Thiện Lý.
 
 - Bài 01: `index.html` — bảng, khóa chính, khóa ngoại và quan hệ.
-- Bài 02: `forms.html` — Form, Record Source, Form Wizard, thêm và sửa lượt mượn.
+- Bài 02: `forms.html` — đủ ba Form người đọc, sách, mượn trả; AutoNumber chỉ đọc, dropdown chọn tên lưu mã, trạng thái và nút lệnh.
 - Yêu cầu thực hành: `bai02-form-canvas.html`.
 
 Mỗi bài có ba chặng, phần tự thử, checkpoint nhiều dạng và Boss cuối. Chứng chỉ Bạc mở khi hoàn thành toàn bộ nhiệm vụ bắt buộc; hai câu mở rộng nâng lên Vàng. Đảo 3D và bài đọc dùng chung tiến độ. Mỗi trạm có trò chơi tùy chọn tối đa 30 giây; chơi không cấp tín chỉ học tập.
 
-Ảnh PNG chụp trực tiếp từ Access ở 1920×1080, cắt giữ nguyên điểm ảnh. Video Form quay trực tiếp ở 1080p/30 fps, dài 3 phút 34 giây, có vòng sáng, tooltip và chú thích tiếng Việt, không có lời đọc. Các trình phát hiện sẵn trong bài.
+Ảnh PNG chụp trực tiếp từ Access ở 1920×1080, cắt giữ nguyên điểm ảnh. Ba video quay trực tiếp ở 1080p/30 fps, hướng dẫn Wizard, cấu hình và vận hành cả ba Form, có vòng sáng, tooltip và chú thích tiếng Việt, không có lời đọc. Các trình phát hiện sẵn trong bài.
 
 Hồ sơ và tiến độ lưu trong trình duyệt của máy học. Hai bài dùng chung hồ sơ nhưng có tiến độ và chứng chỉ riêng. Phiên bản tĩnh chưa đồng bộ nhiều thiết bị hoặc tổng hợp điểm của lớp. Điểm thực hành chính thức quản lý trên Canvas.
 

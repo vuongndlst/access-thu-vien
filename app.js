@@ -264,7 +264,7 @@
     document.body.classList.remove("at-gate", "embedded-lesson");
     document.body.classList.add("world-view");
     document.querySelector("#identity-bar").innerHTML = "";
-    app.innerHTML = `<iframe id="access-world" src="${DATA.worldPage || "world.html"}" title="Đảo 3D ${esc(DATA.title)}" allow="autoplay; fullscreen" allowfullscreen></iframe><a class="world-course" href="${DATA.kind === "forms" ? "index.html" : "forms.html"}">${DATA.kind === "forms" ? "← Bài 01 · Bảng và quan hệ" : "Bài 02 · Form nhập liệu →"}</a>`;
+    app.innerHTML = `<iframe id="access-world" src="${DATA.worldPage || "world.html"}?v=${DATA.revision || "three-forms-20261113"}" title="Đảo 3D ${esc(DATA.title)}" allow="autoplay; fullscreen" allowfullscreen></iframe><a class="world-course" href="${DATA.kind === "forms" ? "index.html" : "forms.html"}">${DATA.kind === "forms" ? "← Bài 01 · Bảng và quan hệ" : "Bài 02 · Form nhập liệu →"}</a>`;
   }
 
   function stageContent(index) {
@@ -368,7 +368,7 @@
 
   function correct(question, answer) {
     if (question.type === "multi") return Array.isArray(answer) && answer.length === question.answer.length && question.answer.every(option => answer.includes(option));
-    if (question.type === "order") return JSON.stringify(answer) === JSON.stringify(question.answer);
+    if (question.type === "order") return (question.acceptedAnswers || [question.answer]).some(order => JSON.stringify(answer) === JSON.stringify(order));
     if (question.items) return question.items.every((item, index) => answer[index] === item.answer);
     return answer === question.answer;
   }
@@ -621,7 +621,7 @@
     return `<div class="boss-layout"><div class="boss-work"><div class="boss-intro"><h2>Giải 6 nhiệm vụ để mở thư viện</h2><p>Mỗi nhiệm vụ hoàn thành sẽ làm giảm máu Boss. Có thể sửa câu trả lời và thử lại. Chứng chỉ Bạc mở khi em hoàn thành cả 6 nhiệm vụ cùng các chặng trước.</p></div>${step.challenges.filter(question => !question.advanced).map(questionCard).join("")}
       <section class="certificate-panel" id="certificate-panel"><h2 id="certificate-status">Chứng chỉ của em</h2><p id="certificate-message"></p><button type="button" class="primary" id="certificate-action" disabled>Xem chứng chỉ</button></section>
       <details class="advanced-section"><summary>Thử thách Vàng · 2 câu mở rộng <span>Tùy chọn</span></summary><p>Hoàn thành cả hai câu sau khi vượt Boss để nâng hạng chứng chỉ.</p>${step.challenges.filter(question => question.advanced).map(questionCard).join("")}</details>
-      <section class="canvas-task"><h2>Sẵn sàng thực hành trên Canvas</h2>${DATA.kind === "forms" ? '<p>Mở CSDL thư viện của bài trước. Tạo <code>F_MuonTra</code> bằng Form Wizard với nguồn MƯỢN_TRẢ và đủ bảy trường. Thêm ít nhất <strong>2 lượt mượn hợp lệ qua Form</strong>, rồi cập nhật NgayTra và TrangThai cho một lượt.</p><p>Thử một mã sách chưa tồn tại, chụp thông báo, sửa mã rồi lưu. Nộp tệp Access, ảnh Form View, ảnh Record Source và ảnh bảng đối chiếu. Viết tối đa 100 từ giải thích Form lưu dữ liệu ở đâu và vì sao mã sai bị chặn.</p><a href="bai02-form-canvas.html" target="_blank" rel="noopener">Xem đầy đủ yêu cầu thực hành →</a>' : '<p>Mở Microsoft Access và tự tạo <code>ThuVien.accdb</code> với ba bảng đúng cấu trúc đã học. Tạo hai quan hệ có toàn vẹn tham chiếu. Nhập ít nhất <strong>5 người đọc, 5 sách và 10 lượt mượn</strong>.</p>'}<p>Thực hiện theo bài giao trên Canvas của lớp. Chứng chỉ ghi nhận phần tự học trên web.</p></section>
+      <section class="canvas-task"><h2>Sẵn sàng thực hành trên Canvas</h2>${DATA.kind === "forms" ? FormsLesson.practiceSummary() : '<p>Mở Microsoft Access và tự tạo <code>ThuVien.accdb</code> với ba bảng đúng cấu trúc đã học. Tạo hai quan hệ có toàn vẹn tham chiếu. Nhập ít nhất <strong>5 người đọc, 5 sách và 10 lượt mượn</strong>.</p>'}<p>Thực hiện theo bài giao trên Canvas của lớp. Chứng chỉ ghi nhận phần tự học trên web.</p></section>
       </div><aside class="boss-dock" aria-label="Tiến độ Boss"><div id="boss-character" aria-label="Nhân vật Boss người giữ thư viện" role="img"></div><h2>Người giữ thư viện</h2><button id="boss-toggle" class="boss-toggle" type="button" aria-expanded="false">Hiện Boss</button><div class="boss-stats"><strong id="boss-hp-text">Máu 100%</strong><span id="boss-count">0/6</span></div><div class="hp-track" role="progressbar" aria-label="Máu Boss còn lại" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100"><div id="hp-fill"></div></div><p id="boss-completion"></p><div class="b3-noi">Ta đang giữ 6 cánh cửa. Dùng kiến thức của em để mở từng cửa nhé!</div><details class="boss-missing"><summary>Nhiệm vụ còn lại</summary><ul id="boss-missing-list"></ul></details></aside></div>`;
   }
 
@@ -650,7 +650,7 @@
     document.querySelector("#certificate-status").textContent = result.gold ? "Chứng chỉ Vàng đã sẵn sàng" : result.completed ? "Chứng chỉ Bạc đã sẵn sàng" : "Hoàn thành Boss để nhận chứng chỉ";
     document.querySelector("#certificate-message").textContent = result.gold ? "Em đã hoàn thành bài học và cả hai câu mở rộng." : result.completed ? "Em đã hoàn thành ba chặng và sáu nhiệm vụ Boss. Có thể nhận chứng chỉ ngay hoặc thử thêm hai câu Vàng." : "Tiến độ từng nhiệm vụ được tự lưu để em học tiếp.";
     if (result.completed) {
-      const badge = result.gold ? "gold" : "silver";
+      const badge = (result.gold ? "gold" : "silver") + (DATA.revision ? ":" + DATA.revision : "");
       if (!state.certificate?.[badge]) update({ certificate: { ...state.certificate, [badge]: new Date().toISOString() } });
     }
   }
@@ -674,7 +674,8 @@
     const canvas = document.querySelector("#certificate-canvas");
     const context = canvas.getContext("2d");
     const gold = result.gold;
-    const issued = state.certificate?.[gold ? "gold" : "silver"] || new Date().toISOString();
+    const certificateKey = (gold ? "gold" : "silver") + (DATA.revision ? ":" + DATA.revision : "");
+    const issued = state.certificate?.[certificateKey] || new Date().toISOString();
     context.fillStyle = "#fffdf8";
     context.fillRect(0, 0, 2400, 1500);
     context.strokeStyle = gold ? "#be8b22" : "#7a83a2";
@@ -699,7 +700,7 @@
     draw("3 chặng học và 6 nhiệm vụ Boss" + (gold ? " · 2 câu mở rộng" : ""), 1180, 36, "#526177", 400);
     draw("Ngày hoàn thành " + new Date(issued).toLocaleDateString("vi-VN"), 1290, 33, "#526177", 400);
     let hash = 2166136261;
-    for (const char of DATA.id + "|" + profile.id + "|" + (gold ? "G" : "S")) hash = Math.imul(hash ^ char.charCodeAt(0), 16777619) >>> 0;
+    for (const char of DATA.id + "|" + profile.id + "|" + (gold ? "G" : "S") + (DATA.revision || "")) hash = Math.imul(hash ^ char.charCodeAt(0), 16777619) >>> 0;
     draw("Mã học tập ACCESS-" + hash.toString(16).toUpperCase().padStart(8, "0"), 1365, 27, "#526177", 400);
     canvas.setAttribute("aria-label", `Chứng chỉ ${gold ? "Vàng" : "Bạc"}, ${profile.name}, lớp ${profile.className}, đã hoàn thành bài ${DATA.title}.`);
     document.querySelector("#certificate-dialog").showModal();

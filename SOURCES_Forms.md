@@ -66,3 +66,11 @@ Ví dụ kiểm chứng khi quay bài thực hành. Chọn một họ tên trên
 | `TrangThai` | Short Text, Field Size 20 |
 
 `MaMuonTra` do Access sinh. Với lượt đang mượn, `NgayTra` để trống. Các mã trong hai Combo Box lấy từ bảng danh mục hiện có. Ảnh và video thao tác tại máy giáo viên cần được quay từ tệp thư viện thực tế, sau đó kiểm tra độ phân giải 1920×1080 trên tệp xuất.
+
+## Bản ba Form hoàn chỉnh, 13/11/2026
+
+Bài Form được mở rộng bắt buộc cho F_NguoiDoc (NGƯỜI ĐỌC), F_Sach (SÁCH), F_MuonTra (MƯỢN_TRẢ). AutoNumber chỉ đọc; Combo Box hiện tên lưu mã; trạng thái dùng Value List; mỗi Form có năm nút lệnh bằng embedded macro. Giữ mã bài và hồ sơ cũ, bổ sung các nhiệm vụ mới; chứng chỉ của bản đầy đủ có mã và ngày cấp riêng.
+
+Ảnh mới chụp trực tiếp 1920×1080 tại `_planning/forms_v2/captures`, cắt không nội suy. Ba video mới được biên tập từ các đoạn quay thật, giữ 1920×1080/30 fps, thêm chú thích và highlight; không có lời đọc. Các đoạn đưa lên web được kiểm tra chỉ có giao diện Access. Tệp mẫu Access giữ cục bộ cho giáo viên.
+
+Nguồn Microsoft về nút lệnh và macro: [Use a command button](https://support.microsoft.com/en-us/access/use-a-command-button-to-start-an-action-or-a-series-of-actions), [Create a UI macro](https://support.microsoft.com/en-us/access/create-a-user-interface-ui-macro), [RunMenuCommand](https://learn.microsoft.com/en-us/office/client-developer/access/desktop-database-reference/runmenucommand-macro-action). Nguồn về cách cột hiển thị khác cột lưu: [BoundColumn](https://learn.microsoft.com/en-us/office/vba/api/access.combobox.boundcolumn). Nút Đóng trong mẫu dùng lệnh Close tích hợp; nút Lưu dùng SaveRecord, không lưu thiết kế thay cho dữ liệu.

@@ -1,12 +1,51 @@
-<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Thực hành Form · Thư viện</title><link rel="stylesheet" href="style.css"><style>main{max-width:900px;margin:40px auto;padding:24px}h1{font-size:40px}li{margin:12px 0}table{width:100%}@media print{a,button{display:none}main{margin:0}}</style></head><body><main>
-<a href="forms.html?mode=read">← Về bài tự học Form</a><p class="stage-kicker">Microsoft Access · Thực hành trên Canvas</p><h1>Tạo Form quản lý mượn trả</h1>
-<p><strong>Mục tiêu</strong> — Tạo và sử dụng Form có liên kết để thêm, sửa bản ghi; giải thích được dữ liệu lưu ở đâu và kiểm chứng toàn vẹn tham chiếu.</p>
-<p><strong>Chuẩn bị</strong> — Dùng CSDL thư viện của bài trước, có ba bảng đúng cấu trúc, hai quan hệ đã bật Enforce Referential Integrity và dữ liệu danh mục hợp lệ. Tạo một bản sao trước khi thực hành.</p>
-<h2>1. Tạo biểu mẫu</h2><ol><li>Mở Create → Form Wizard, chọn bảng MƯỢN_TRẢ.</li><li>Chuyển đủ bảy trường MaMuonTra, SoTheTV, MaSach, NgayMuon, HanTra, NgayTra, TrangThai sang Selected Fields.</li><li>Chọn Columnar và đặt tên F_MuonTra. Mở Form để xem hoặc nhập thông tin.</li><li>Mở Design View → chọn cả Form → Property Sheet → Data. Kiểm tra Record Source là MƯỢN_TRẢ. Lưu thiết kế.</li></ol>
-<h2>2. Thêm và cập nhật dữ liệu</h2><ol><li>Trong Form View, dùng New (blank) record để thêm ít nhất hai lượt mượn. Dùng số thẻ và mã sách đã có. Để Access tự sinh MaMuonTra.</li><li>Nhập NgayMuon, HanTra và TrangThai. Nếu chưa trả sách, NgayTra được để trống. Lưu bằng Home → Save trong nhóm Records.</li><li>Tìm lại một trong hai lượt vừa thêm. Cập nhật NgayTra và TrangThai thành Đã trả, rồi lưu.</li><li>Mở bảng MƯỢN_TRẢ. Đối chiếu hai lượt mới và thông tin cập nhật. Kiểm tra MaMuonTra của lượt được sửa vẫn giữ nguyên.</li></ol>
-<h2>3. Thử ràng buộc</h2><p>Thử lưu một lượt với mã sách chưa tồn tại, chẳng hạn S999 sau khi kiểm tra bảng SÁCH chưa có mã đó. Chụp thông báo từ Access, sửa sang mã hợp lệ và lưu. Giữ nguyên toàn vẹn tham chiếu.</p>
-<h2>Sản phẩm nộp</h2><ul><li>Tệp <code>MSHS_Form_CSDL_ThuVien.accdb</code> có F_MuonTra hoạt động.</li><li>Ảnh Form View thể hiện một lượt vừa thêm hoặc vừa cập nhật.</li><li>Ảnh Property Sheet cho thấy Record Source = MƯỢN_TRẢ.</li><li>Ảnh bảng MƯỢN_TRẢ cho thấy hai lượt mới và ngày trả đã cập nhật.</li><li>Ảnh thông báo khi nhập mã sai, kèm đoạn giải thích tối đa 100 từ về nơi lưu dữ liệu và nguyên nhân lỗi.</li></ul>
-<p>Điền các ảnh và lời giải thích vào tệp <code>MSHS_Form_CSDL_ThuVien.docx</code>. Nộp cả tệp Word và tệp Access trên Canvas theo bài giao của lớp.</p>
-<h2>Tiêu chí tự kiểm tra</h2><div class="table-scroll"><table><thead><tr><th>Nội dung</th><th>Minh chứng đạt</th></tr></thead><tbody><tr><td>Thiết kế Form</td><td>Đúng tên, đúng nguồn, đủ bảy trường</td></tr><tr><td>Thêm dữ liệu</td><td>Ít nhất hai lượt mới, các khóa ngoại hợp lệ, mã tự sinh</td></tr><tr><td>Cập nhật</td><td>Một lượt có NgayTra và Đã trả, giữ nguyên MaMuonTra</td></tr><tr><td>Kiểm chứng</td><td>Bảng khớp dữ liệu Form; mô tả đúng lỗi tham chiếu</td></tr></tbody></table></div>
-<h2>Mở rộng tùy chọn</h2><p>Dùng Combo Box để chọn tên người đọc và tên sách nhưng lưu SoTheTV, MaSach. Kiểm tra Control Source, Bound Column và giá trị thực trong bảng. Phần này không bắt buộc để hoàn thành bài cơ bản.</p><button onclick="print()">In yêu cầu thực hành</button>
+<!doctype html>
+<html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Thực hành ba Form quản lý thư viện</title><link rel="stylesheet" href="style.css?v=three-forms-20261113"><style>main{max-width:960px;margin:40px auto;padding:24px}h1{font-size:40px}li{margin:12px 0}table{width:100%}code{overflow-wrap:anywhere}@media print{.print-actions{display:none}main{margin:0}h1{font-size:30px}}</style></head><body><main>
+<nav class="print-actions"><a href="forms.html?mode=read">← Về bài tự học</a></nav>
+<p class="stage-kicker">Microsoft Access · Thực hành trên Canvas</p><h1>Ba Form quản lý thư viện</h1>
+<p><strong>Mục tiêu</strong> — Tạo giao diện nhập liệu cho cả ba bảng, dùng danh sách chọn đúng giá trị, thao tác bằng nút lệnh và kiểm chứng dữ liệu được lưu.</p>
+<p><strong>Chuẩn bị</strong> — Dùng CSDL thư viện của bài trước, có ba bảng đúng cấu trúc, hai quan hệ đã bật Enforce Referential Integrity và dữ liệu danh mục hợp lệ. Tạo một bản sao để làm bài.</p>
+<h2>1. Tạo đủ ba Form</h2>
+<div class="table-scroll"><table><thead><tr><th>Tên Form</th><th>Record Source</th><th>Trường phải có</th></tr></thead><tbody>
+<tr><th>F_NguoiDoc</th><td>NGƯỜI ĐỌC</td><td>SoTheTV, HoVaTen, NgaySinh, GioiTinh, DiaChi, DienThoai, Lop, Email</td></tr>
+<tr><th>F_Sach</th><td>SÁCH</td><td>MaSach, TenSach, TacGia, NhaXuatBan, NamXuatBan, TheLoai, SoLuongTon</td></tr>
+<tr><th>F_MuonTra</th><td>MƯỢN_TRẢ</td><td>MaMuonTra, SoTheTV, MaSach, NgayMuon, HanTra, NgayTra, TrangThai</td></tr>
+</tbody></table></div>
+<p>Dùng Form Wizard, chọn đủ trường và bố cục phù hợp. Đặt nhãn tiếng Việt rõ nghĩa, bố trí các ô thẳng hàng và dễ đọc. Ngày dùng điều khiển phù hợp với Date/Time; các trường năm xuất bản và số lượng dùng số nguyên.</p>
+<h2>2. Cấu hình điều khiển của Form mượn trả</h2>
+<ul><li><strong>MaMuonTra</strong> — AutoNumber do Access tự sinh. Ô hiển thị có Locked = Yes và Tab Stop = No. Không yêu cầu học sinh nhập hoặc sửa mã này.</li>
+<li><strong>Người đọc</strong> — Combo Box hiển thị họ tên, lưu SoTheTV vào MƯỢN_TRẢ.SoTheTV. Row Source lấy mã và tên từ NGƯỜI ĐỌC; Bound Column = 1.</li>
+<li><strong>Sách</strong> — Combo Box hiển thị tên sách, lưu MaSach vào MƯỢN_TRẢ.MaSach. Row Source lấy mã và tên từ SÁCH; Bound Column = 1.</li>
+<li><strong>Trạng thái</strong> — Combo Box có Value List gồm Đang mượn và Đã trả; Control Source = TrangThai.</li>
+<li>Đặt Limit To List = Yes cho cả ba danh sách. Có thể hiển thị thêm số thẻ hoặc mã sách bên cạnh tên để phân biệt các tên trùng.</li></ul>
+<p>SoTheTV ở Form người đọc và MaSach ở Form sách là mã danh mục dạng Short Text, nhập duy nhất khi thêm danh mục mới. Hai trường đó không phải AutoNumber.</p>
+<h2>3. Bổ sung nút lệnh cho cả ba Form</h2>
+<div class="table-scroll"><table><thead><tr><th>Nút</th><th>Kết quả phải thực hiện</th></tr></thead><tbody>
+<tr><th>Thêm mới</th><td>Mở bản ghi trống để nhập, không ghi đè bản ghi đang xem</td></tr>
+<tr><th>Lưu</th><td>Lưu thay đổi của bản ghi hiện tại</td></tr>
+<tr><th>Bản ghi trước</th><td>Chuyển tới bản ghi đã lưu đứng trước</td></tr>
+<tr><th>Bản ghi sau</th><td>Chuyển tới bản ghi đã lưu đứng sau</td></tr>
+<tr><th>Đóng</th><td>Đóng Form đang mở</td></tr>
+</tbody></table></div>
+<p>Dùng Command Button Wizard hoặc Macro Builder để gắn hành động phù hợp. Nút Lưu ghi dữ liệu bản ghi; Ctrl+S trong Design View lưu thiết kế Form. Form có liên kết cũng có thể tự lưu khi chuyển bản ghi hoặc đóng, vì vậy Đóng không phải nút hủy.</p>
+<h2>4. Chạy một quy trình kiểm thử đầy đủ</h2>
+<ol><li>Dùng F_NguoiDoc thêm ít nhất một người đọc mới, có mã chưa dùng và đủ thông tin. Bấm Lưu.</li>
+<li>Dùng F_Sach thêm ít nhất một sách mới, có mã chưa dùng và đủ thông tin. Bấm Lưu.</li>
+<li>Dùng F_MuonTra tạo một lượt mượn bằng cách chọn đúng hai danh mục vừa thêm. Nhập ngày mượn và hạn trả, để ngày trả trống, chọn Đang mượn rồi Lưu.</li>
+<li>Mở bảng MƯỢN_TRẢ. Kiểm tra SoTheTV và MaSach lưu mã, đối chiếu đúng người và sách đã chọn.</li>
+<li>Tìm lại lượt đó, cập nhật NgayTra và chọn Đã trả, rồi Lưu. Kiểm tra MaMuonTra giữ nguyên và không xuất hiện thêm một lượt chỉ để ghi việc trả.</li>
+<li>Thử các nút chuyển bản ghi và Đóng ở cả ba Form. Nếu danh mục mới chưa hiện ở một Form đang mở, nạp lại danh sách bằng Requery hoặc mở lại Form.</li></ol>
+<h2>Sản phẩm nộp trên Canvas</h2>
+<ul><li>Tệp <code>MSHS_Form_CSDL_ThuVien.accdb</code> có đủ ba Form hoạt động.</li>
+<li>Tệp <code>MSHS_Form_CSDL_ThuVien.docx</code> có ảnh Form View của cả ba Form.</li>
+<li>Trong Word, bổ sung ảnh các thuộc tính AutoNumber chỉ đọc, Combo Box lưu mã và Value List trạng thái; ảnh macro của nút Lưu; ảnh bảng MƯỢN_TRẢ đối chiếu lượt vừa tạo và cập nhật.</li>
+<li>Viết tối đa 100 từ giải thích vì sao Form hiển thị tên nhưng bảng lưu mã, vì sao không sửa MaMuonTra và nút Lưu ghi dữ liệu nào.</li></ul>
+<h2>Tự đối chiếu trước khi nộp</h2>
+<div class="table-scroll"><table><thead><tr><th>Tiêu chí</th><th>Minh chứng đạt</th></tr></thead><tbody>
+<tr><td>Ba Form và nguồn dữ liệu</td><td>Đúng tên, đúng bảng, đủ 22 trường liên kết</td></tr>
+<tr><td>Điều khiển nhập liệu</td><td>Mã tự sinh chỉ đọc, hai danh sách lưu mã, trạng thái bị giới hạn</td></tr>
+<tr><td>Nút lệnh</td><td>Năm nút thực hiện đúng trên cả ba Form</td></tr>
+<tr><td>Dữ liệu thực hành</td><td>Có danh mục và lượt mới; cập nhật trả giữ nguyên mã; bảng khớp Form</td></tr>
+</tbody></table></div>
+<p>Dùng dữ liệu giả lập cho bài thực hành. Chứng chỉ trên web ghi nhận phần tự học; sản phẩm Access và điểm thực hành được quản lý trên Canvas.</p>
+<div class="print-actions"><button onclick="print()">In yêu cầu thực hành</button></div>
 </main></body></html>

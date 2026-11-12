@@ -1,44 +1,539 @@
 "use strict";
 window.LESSON = {
-  id: "access-form-v1", kind: "forms", page: "forms.html", worldPage: "world-forms.html",
-  title: "Tạo Form quản lý mượn trả", island: "Đảo Form thư viện", symbols: ["FORM", "VIEW", "DATA", "SAVE"],
-  certificateTopics: "Form · Record Source · Form Wizard · Thêm và sửa bản ghi",
-  steps: [
-    {id:"hieu-form",title:"Form và bảng dữ liệu",short:"Hiểu Form",time:"5–7 phút",kind:"stage",subtitle:"Một giao diện dễ nhập, cùng dữ liệu của bảng.",challenges:[
-      {id:"form-explore",type:"demo",title:"Đọc hai bản ghi trên Form"},
-      {id:"t1",type:"single",title:"Dữ liệu nằm ở đâu?",prompt:"F_MuonTra là Form có Record Source = MƯỢN_TRẢ. Khi em lưu một lượt mượn mới qua Form, bản ghi được lưu ở đâu?",options:["Trong bảng MƯỢN_TRẢ","Chỉ trong hình ảnh của Form","Trong một bảng mới tự tạo tên F_MuonTra","Trong bảng SÁCH"],answer:"Trong bảng MƯỢN_TRẢ",hint:"Record Source là nguồn bản ghi mà Form sử dụng.",explanation:"Form có liên kết giúp xem, thêm và sửa các bản ghi trong nguồn dữ liệu. Bài này dùng bảng MƯỢN_TRẢ."},
-      {id:"t2",type:"match",title:"Ghép vai trò",prompt:"Chọn đúng vai trò của mỗi thành phần.",items:[
-        {label:"Table",options:["Lưu các bản ghi có cấu trúc","Giao diện xem và nhập dữ liệu","Nguồn bản ghi của Form"],answer:"Lưu các bản ghi có cấu trúc"},
-        {label:"Form",options:["Lưu các bản ghi có cấu trúc","Giao diện xem và nhập dữ liệu","Nguồn bản ghi của Form"],answer:"Giao diện xem và nhập dữ liệu"},
-        {label:"Record Source",options:["Lưu các bản ghi có cấu trúc","Giao diện xem và nhập dữ liệu","Nguồn bản ghi của Form"],answer:"Nguồn bản ghi của Form"}
-      ],hint:"Bảng lưu dữ liệu. Form tổ chức giao diện. Thuộc tính Record Source chỉ ra bảng hoặc truy vấn nguồn.",explanation:"Một bảng có thể được dùng bởi nhiều Form. Các Form này vẫn làm việc với dữ liệu trong bảng nguồn."},
-      {id:"t3",type:"truefalse",title:"Tạo Form có tạo bản sao dữ liệu không?",prompt:"Dùng Form Wizard tạo F_MuonTra từ MƯỢN_TRẢ sẽ tự sao chép mọi lượt mượn thành một bảng dữ liệu độc lập.",answer:"Sai",hint:"So sánh hai cách nhìn cùng một bản ghi ở phần tự thử.",explanation:"Wizard tạo đối tượng Form có liên kết với nguồn. Dữ liệu gốc vẫn ở bảng MƯỢN_TRẢ."}
-    ]},
-    {id:"tao-form",title:"Tạo Form bằng Wizard",short:"Tạo Form",time:"8–10 phút",kind:"stage",subtitle:"Chọn đúng nguồn, trường và bố cục.",challenges:[
-      {id:"wizard-lab",type:"demo",title:"Thiết lập một Form mượn trả"},
-      {id:"p1",type:"single",title:"Chọn nguồn bản ghi",prompt:"Em muốn nhập NgayMuon, HanTra và TrangThai của một lượt mượn. Nên chọn nguồn nào cho Form trong bài này?",options:["MƯỢN_TRẢ","NGƯỜI ĐỌC","SÁCH","F_MuonTra"],answer:"MƯỢN_TRẢ",hint:"Tìm bảng chứa các trường cần nhập.",explanation:"Ba trường này thuộc MƯỢN_TRẢ. Chọn bảng đó làm Record Source."},
-      {id:"p2",type:"order",title:"Sắp xếp quy trình Wizard",prompt:"CSDL đã có đủ ba bảng và quan hệ. Đặt các bước theo thứ tự.",items:[{id:"name",text:"Đặt tên F_MuonTra và bấm Finish"},{id:"fields",text:"Chọn bảng MƯỢN_TRẢ và đưa đủ bảy trường sang Selected Fields"},{id:"layout",text:"Chọn Columnar rồi Next"},{id:"open",text:"Mở Create → Form Wizard"}],answer:["open","fields","layout","name"],hint:"Chọn nguồn và trường trước, chọn bố cục sau, cuối cùng mới hoàn tất.",explanation:"Create → Form Wizard → nguồn và trường → Columnar → tên Form → Finish."},
-      {id:"p3",type:"select",title:"Chọn chế độ phù hợp",prompt:"Mỗi chế độ dùng cho việc nào?",items:[
-        {label:"Nhập một lượt mượn",options:["Form View","Design View"],answer:"Form View"},
-        {label:"Thay đổi thiết kế và thuộc tính Form",options:["Form View","Design View"],answer:"Design View"}
-      ],hint:"View để sử dụng; Design để thiết kế.",explanation:"Form View dùng với dữ liệu. Design View chỉnh cấu trúc giao diện, điều khiển và thuộc tính. Layout View giúp chỉnh bố cục khi vẫn thấy dữ liệu."}
-    ]},
-    {id:"dung-form",title:"Thêm và sửa qua Form",short:"Dùng Form",time:"8–10 phút",kind:"stage",subtitle:"Lưu đúng mã và kiểm tra lại trong bảng.",challenges:[
-      {id:"entry-lab",type:"demo",title:"Thử mã sai, thêm đúng và cập nhật lượt trả"},
-      {id:"f1",type:"multi",title:"Trước khi thêm lượt mượn",prompt:"Chọn hai việc cần làm theo thiết kế đã học.",options:["Chọn số thẻ và mã sách đã tồn tại","Tự nhập MaMuonTra theo số thứ tự đang nhìn thấy","Để Access tự sinh MaMuonTra","Tắt toàn vẹn tham chiếu để dễ nhập"],answer:["Chọn số thẻ và mã sách đã tồn tại","Để Access tự sinh MaMuonTra"],hint:"MaMuonTra dùng AutoNumber. Hai mã còn lại là khóa ngoại.",explanation:"Access tự sinh khóa chính. Người nhập cần dùng đúng mã thẻ và mã sách có trong các bảng danh mục."},
-      {id:"f2",type:"truefalse",title:"Nhập qua Form có bỏ qua ràng buộc?",prompt:"Đã bật Enforce Referential Integrity. Nhập MaSach = S999 qua Form vẫn bị chặn nếu mã đó chưa có trong SÁCH.",answer:"Đúng",hint:"Form đang lưu vào chính bảng MƯỢN_TRẢ.",explanation:"Quan hệ và ràng buộc nằm ở dữ liệu. Đổi sang giao diện Form không làm mất ràng buộc đó."},
-      {id:"f3",type:"single",title:"Cập nhật khi sách được trả",prompt:"Lượt mượn mã 12 vừa được trả. Cách xử lý phù hợp là gì?",options:["Tìm bản ghi 12, cập nhật NgayTra và TrangThai rồi lưu","Thêm một lượt mượn mới chỉ để ghi NgayTra","Sửa MaMuonTra của bản ghi khác thành 12","Xóa người đọc khỏi NGƯỜI ĐỌC"],answer:"Tìm bản ghi 12, cập nhật NgayTra và TrangThai rồi lưu",hint:"Đây là thay đổi của một lượt mượn đã có.",explanation:"Cập nhật đúng bản ghi giữ nguyên mã nhận diện của lượt mượn và bổ sung thông tin trả sách."}
-    ]},
-    {id:"boss",title:"Boss · Người quản lý quầy mượn",short:"Boss cuối",kind:"boss",subtitle:"Tự quyết định đúng nguồn, thao tác và cách xử lý lỗi.",challenges:[
-      {id:"b1",type:"single",title:"Form nào cho quầy mượn?",prompt:"F_Sach có Record Source = SÁCH. Em muốn nhập một lượt mượn mới. Nên làm gì?",options:["Dùng Form có nguồn MƯỢN_TRẢ","Nhập tên người đọc vào TenSach","Sửa nguồn của bảng SÁCH thành NGƯỜI ĐỌC","Chỉ đổi tên F_Sach thành F_MuonTra"],answer:"Dùng Form có nguồn MƯỢN_TRẢ",hint:"Nguồn quyết định các bản ghi mà Form làm việc với.",explanation:"Đổi tên Form không đổi nguồn. Cần Form có Record Source phù hợp với lượt mượn."},
-      {id:"b2",type:"match",title:"Phân biệt thuộc tính",prompt:"Ghép từng nội dung với đúng ý nghĩa.",items:[{label:"Record Source = MƯỢN_TRẢ",options:["Nguồn bản ghi của cả Form","Trường gắn với một ô nhập","Chữ hướng dẫn hiển thị"],answer:"Nguồn bản ghi của cả Form"},{label:"Control Source = MaSach",options:["Nguồn bản ghi của cả Form","Trường gắn với một ô nhập","Chữ hướng dẫn hiển thị"],answer:"Trường gắn với một ô nhập"},{label:"Nhãn “Mã sách”",options:["Nguồn bản ghi của cả Form","Trường gắn với một ô nhập","Chữ hướng dẫn hiển thị"],answer:"Chữ hướng dẫn hiển thị"}],hint:"Form có nguồn bản ghi; ô nhập có nguồn điều khiển; Label là nhãn.",explanation:"Record Source thuộc Form. Control Source của ô nhập chỉ ra trường nhận giá trị. Sửa nội dung Label chỉ sửa chữ hiển thị."},
-      {id:"b3",type:"order",title:"Từ Form đến dữ liệu đã lưu",prompt:"Sắp xếp thao tác thêm một lượt mượn.",items:[{id:"check",text:"Mở bảng MƯỢN_TRẢ và đối chiếu bản ghi đã lưu"},{id:"new",text:"Mở Form View và chọn New (blank) record"},{id:"save",text:"Lưu bản ghi bằng Home → Save"},{id:"fill",text:"Nhập mã hợp lệ và thông tin mượn; để AutoNumber tự sinh"}],answer:["new","fill","save","check"],hint:"Tạo bản ghi trước, nhập và lưu rồi mới đối chiếu.",explanation:"Một thao tác đã hoàn tất cần có bằng chứng dữ liệu xuất hiện trong bảng nguồn."},
-      {id:"b4",type:"multi",title:"Form báo thiếu bản ghi liên quan",prompt:"Access chặn S999 vì chưa có trong SÁCH. Chọn hai cách xử lý hợp lệ, tùy tình huống thực tế.",options:["Sửa sang mã sách đã có và đúng cuốn đang mượn","Thêm sách S999 vào SÁCH nếu đó thực sự là sách mới rồi nhập lại","Đổi nhãn MaSach thành Tên sách","Tắt ràng buộc để giữ mã không tồn tại"],answer:["Sửa sang mã sách đã có và đúng cuốn đang mượn","Thêm sách S999 vào SÁCH nếu đó thực sự là sách mới rồi nhập lại"],hint:"Cần khôi phục tham chiếu đến một cuốn sách có thật.",explanation:"Mã tham chiếu phải tồn tại ở bảng SÁCH và phải đúng ý nghĩa của lượt mượn."},
-      {id:"b5",type:"select",title:"Đọc kết quả cập nhật",prompt:"Sau khi sửa NgayTra của lượt mã 12 và lưu qua Form…",items:[{label:"Bản ghi trong bảng MƯỢN_TRẢ",options:["Được cập nhật NgayTra","Tự nhân đôi thành hai hàng"],answer:"Được cập nhật NgayTra"},{label:"MaMuonTra của lượt đó",options:["Vẫn là 12","Tự đổi thành một mã mới khi sửa ngày"],answer:"Vẫn là 12"}],hint:"Sửa một bản ghi khác với thêm bản ghi mới.",explanation:"Cập nhật ngày không tạo thêm lượt và không đổi AutoNumber đã có."},
-      {id:"b6",type:"truefalse",title:"Chỉ sửa nhãn có đủ không?",prompt:"Đổi Label “MaSach” thành “Tên sách” sẽ tự làm ô nhập lấy TenSach từ bảng SÁCH.",answer:"Sai",hint:"Label và Control Source có vai trò khác nhau.",explanation:"Nhãn chỉ là chữ hiển thị. Cần cấu hình đúng nguồn điều khiển hoặc Combo Box nếu muốn hiển thị tên và lưu mã."},
-      {id:"g1",advanced:true,type:"single",title:"Vàng · Chọn tên nhưng lưu mã",prompt:"Combo Box có hai cột MaSach, TenSach; Bound Column = 1 và ẩn cột đầu. Control Source = MaSach. Khi chọn “Bản đồ bầu trời”, giá trị lưu là gì?",options:["Mã S001 ở cột thứ nhất","Chuỗi Bản đồ bầu trời","Cả hai cột trong cùng một trường","Số thứ tự hàng đang hiển thị"],answer:"Mã S001 ở cột thứ nhất",hint:"Bound Column quyết định cột trả giá trị; ẩn cột chỉ thay đổi cách hiển thị.",explanation:"Cấu hình này giúp người dùng chọn theo tên trong khi trường khóa ngoại vẫn lưu mã sách."},
-      {id:"g2",advanced:true,type:"multi",title:"Vàng · Kiểm tra Combo Box",prompt:"Chọn hai thuộc tính cần kiểm tra để Combo Box sách ghi đúng MaSach của MƯỢN_TRẢ.",options:["Control Source là MaSach","Bound Column trỏ đến cột mã trong Row Source","Label phải giống hệt tên bảng","Màu nền phải giống bảng SÁCH"],answer:["Control Source là MaSach","Bound Column trỏ đến cột mã trong Row Source"],hint:"Một thuộc tính chỉ trường nhận giá trị, một thuộc tính chỉ cột trả giá trị.",explanation:"Control Source liên kết điều khiển với MaSach. Bound Column lấy giá trị mã từ nguồn danh sách."}
-    ]}
+  "id": "access-form-v1",
+  "revision": "three-forms-20261113",
+  "kind": "forms",
+  "page": "forms.html",
+  "worldPage": "world-forms.html",
+  "title": "Ba Form quản lý thư viện",
+  "island": "Đảo Form thư viện",
+  "symbols": [
+    "FORM",
+    "CODE",
+    "LIST",
+    "SAVE"
   ],
-  media:{create:{id:"dEaQIrw3CZY",title:"Access: Creating Forms",summary:"Quan sát cách tạo Form, chọn nguồn và sử dụng các chế độ xem."},use:{id:"uTRdmSQjjm8",title:"Access: Working with Forms",summary:"Quan sát cách di chuyển giữa các bản ghi, thêm và cập nhật thông tin."}}
+  "certificateTopics": "Người đọc · Sách · Mượn trả · Combo Box · Nút lệnh",
+  "steps": [
+    {
+      "id": "hieu-form",
+      "title": "Ba Form, ba nguồn dữ liệu",
+      "short": "Hiểu ba Form",
+      "time": "7–10 phút",
+      "kind": "stage",
+      "subtitle": "Phân biệt mã tự sinh, mã danh mục và các ô lựa chọn.",
+      "challenges": [
+        {
+          "id": "explore-forms-v2",
+          "type": "demo",
+          "title": "Quan sát đủ ba Form và dữ liệu được lưu"
+        },
+        {
+          "id": "v2-t1",
+          "type": "match",
+          "title": "Form nào dùng bảng nào?",
+          "prompt": "Ghép từng Form với nguồn bản ghi phù hợp.",
+          "items": [
+            {
+              "label": "F_NguoiDoc",
+              "options": [
+                "NGƯỜI ĐỌC",
+                "SÁCH",
+                "MƯỢN_TRẢ"
+              ],
+              "answer": "NGƯỜI ĐỌC"
+            },
+            {
+              "label": "F_Sach",
+              "options": [
+                "NGƯỜI ĐỌC",
+                "SÁCH",
+                "MƯỢN_TRẢ"
+              ],
+              "answer": "SÁCH"
+            },
+            {
+              "label": "F_MuonTra",
+              "options": [
+                "NGƯỜI ĐỌC",
+                "SÁCH",
+                "MƯỢN_TRẢ"
+              ],
+              "answer": "MƯỢN_TRẢ"
+            }
+          ],
+          "hint": "Mỗi Form phục vụ một nhóm bản ghi.",
+          "explanation": "F_NguoiDoc dùng NGƯỜI ĐỌC; F_Sach dùng SÁCH; F_MuonTra dùng MƯỢN_TRẢ."
+        },
+        {
+          "id": "v2-t2",
+          "type": "truefalse",
+          "title": "Mã mượn trả có nhập tay không?",
+          "prompt": "Khi thêm lượt mượn trong F_MuonTra, em tự điền MaMuonTra để mã tăng liên tục.",
+          "answer": "Sai",
+          "hint": "Nhớ kiểu dữ liệu đã chọn cho MaMuonTra ở bài trước.",
+          "explanation": "MaMuonTra là AutoNumber, do Access tự sinh. Người dùng không nhập hoặc sửa giá trị này; mã có thể có khoảng trống."
+        },
+        {
+          "id": "v2-t3",
+          "type": "single",
+          "title": "Chọn tên, lưu giá trị nào?",
+          "prompt": "Trong F_MuonTra, em chọn tên một người đọc từ Combo Box. Trường SoTheTV nhận giá trị nào?",
+          "options": [
+            "Mã thẻ của người được chọn",
+            "Họ tên của người được chọn",
+            "Vị trí dòng trong danh sách",
+            "Mã mượn trả đang hiển thị"
+          ],
+          "answer": "Mã thẻ của người được chọn",
+          "hint": "Tên giúp chọn đúng người; khóa ngoại vẫn phải khớp bảng danh mục.",
+          "explanation": "Combo Box hiển thị tên nhưng lưu số thẻ. Không chép họ tên vào trường SoTheTV."
+        }
+      ]
+    },
+    {
+      "id": "tao-form",
+      "title": "Thiết kế ba Form dùng được",
+      "short": "Thiết kế Form",
+      "time": "12–18 phút",
+      "kind": "stage",
+      "subtitle": "Tạo Form, cấu hình Combo Box và gắn nút lệnh.",
+      "challenges": [
+        {
+          "id": "config-reader-v2",
+          "type": "demo",
+          "title": "Cấu hình F_NguoiDoc"
+        },
+        {
+          "id": "config-book-v2",
+          "type": "demo",
+          "title": "Cấu hình F_Sach"
+        },
+        {
+          "id": "config-loan-v2",
+          "type": "demo",
+          "title": "Cấu hình F_MuonTra"
+        },
+        {
+          "id": "buttons-v2",
+          "type": "demo",
+          "title": "Ghép thao tác cho năm nút lệnh"
+        },
+        {
+          "id": "v2-p1",
+          "type": "select",
+          "title": "Hai nguồn của Combo Box",
+          "prompt": "Combo Box chọn sách có Row Source gồm MaSach, TenSach theo thứ tự này. Hoàn thiện cấu hình.",
+          "items": [
+            {
+              "label": "Control Source",
+              "options": [
+                "MaSach",
+                "TenSach",
+                "SoTheTV"
+              ],
+              "answer": "MaSach"
+            },
+            {
+              "label": "Bound Column",
+              "options": [
+                "1",
+                "2",
+                "0"
+              ],
+              "answer": "1"
+            },
+            {
+              "label": "Column Widths",
+              "options": [
+                "0cm;6cm",
+                "6cm;0cm",
+                "0cm;0cm"
+              ],
+              "answer": "0cm;6cm"
+            }
+          ],
+          "hint": "Phân biệt trường nhận dữ liệu, cột trả giá trị và cột được nhìn thấy.",
+          "explanation": "Control Source = MaSach; Bound Column = 1 lấy cột mã; ẩn cột đầu để ô hiển thị tên sách."
+        },
+        {
+          "id": "v2-p2",
+          "type": "single",
+          "title": "Nút Lưu lưu điều gì?",
+          "prompt": "Nút Lưu trong Form nhập liệu nên gắn với hành động nào của Command Button Wizard?",
+          "options": [
+            "Record Operations → Save Record",
+            "Form Operations → Close Form",
+            "Record Operations → Add New Record",
+            "Record Navigation → Next Record"
+          ],
+          "answer": "Record Operations → Save Record",
+          "hint": "Mục tiêu là ghi các thay đổi của bản ghi hiện tại.",
+          "explanation": "Save Record lưu dữ liệu đang nhập. Lưu thiết kế Form là một thao tác khác."
+        },
+        {
+          "id": "v2-p3",
+          "type": "order",
+          "title": "Từ bảng đến Form hoàn chỉnh",
+          "prompt": "Sắp xếp các nhóm việc theo thứ tự hợp lý.",
+          "items": [
+            {
+              "id": "test",
+              "text": "Lưu thiết kế, mở Form View và kiểm tra"
+            },
+            {
+              "id": "buttons",
+              "text": "Thêm các nút lệnh phù hợp"
+            },
+            {
+              "id": "controls",
+              "text": "Cấu hình ô nhập, AutoNumber và dropdown"
+            },
+            {
+              "id": "wizard",
+              "text": "Tạo Form Wizard từ bảng tương ứng"
+            }
+          ],
+          "answer": [
+            "wizard",
+            "controls",
+            "buttons",
+            "test"
+          ],
+          "hint": "Cần có Form trước khi cấu hình điều khiển và kiểm thử.",
+          "explanation": "Tạo Form → cấu hình điều khiển → gắn nút → lưu và thử bằng dữ liệu."
+        }
+      ]
+    },
+    {
+      "id": "dung-form",
+      "title": "Vận hành quầy mượn sách",
+      "short": "Dùng ba Form",
+      "time": "10–15 phút",
+      "kind": "stage",
+      "subtitle": "Thêm người đọc và sách, chọn tên để mượn, rồi cập nhật khi trả.",
+      "challenges": [
+        {
+          "id": "add-reader-v2",
+          "type": "demo",
+          "title": "Thêm người đọc qua F_NguoiDoc"
+        },
+        {
+          "id": "add-book-v2",
+          "type": "demo",
+          "title": "Thêm sách qua F_Sach"
+        },
+        {
+          "id": "loan-v2",
+          "type": "demo",
+          "title": "Mượn bằng hai danh mục vừa thêm"
+        },
+        {
+          "id": "return-v2",
+          "type": "demo",
+          "title": "Cập nhật ngày trả và trạng thái"
+        },
+        {
+          "id": "v2-f1",
+          "type": "order",
+          "title": "Danh mục mới, lượt mượn mới",
+          "prompt": "Một người đọc mới mượn một sách mới. Cả hai chưa có trong CSDL. Sắp xếp để danh mục được lưu trước khi tạo lượt mượn.",
+          "items": [
+            {
+              "id": "save",
+              "text": "Nhập ngày và trạng thái rồi bấm Lưu"
+            },
+            {
+              "id": "loan",
+              "text": "Mở F_MuonTra, bấm Thêm mới, chọn hai tên"
+            },
+            {
+              "id": "book",
+              "text": "Thêm và lưu sách ở F_Sach"
+            },
+            {
+              "id": "reader",
+              "text": "Thêm và lưu người đọc ở F_NguoiDoc"
+            }
+          ],
+          "answer": [
+            "reader",
+            "book",
+            "loan",
+            "save"
+          ],
+          "hint": "Khóa ngoại cần tham chiếu đến danh mục đã tồn tại.",
+          "explanation": "Hai danh mục cần được lưu trước lượt mượn; có thể thêm người đọc hoặc thêm sách trước.",
+          "acceptedAnswers": [
+            [
+              "reader",
+              "book",
+              "loan",
+              "save"
+            ],
+            [
+              "book",
+              "reader",
+              "loan",
+              "save"
+            ]
+          ]
+        },
+        {
+          "id": "v2-f2",
+          "type": "truefalse",
+          "title": "Đóng Form có luôn hủy dữ liệu?",
+          "prompt": "Em đã sửa một bản ghi trên Form có liên kết. Bấm Đóng luôn hủy phần đang sửa nên không cần kiểm tra.",
+          "answer": "Sai",
+          "hint": "Form có liên kết có thể tự lưu khi chuyển bản ghi hoặc đóng.",
+          "explanation": "Access có thể tự lưu bản ghi khi chuyển dòng hoặc đóng Form. Nút Lưu giúp chủ động lưu; muốn hủy phải dùng thao tác Undo phù hợp trước khi bản ghi được lưu."
+        },
+        {
+          "id": "v2-f3",
+          "type": "multi",
+          "title": "Trả sách cho lượt đang có",
+          "prompt": "Chọn hai việc cần làm khi sách của một lượt mượn đã được trả.",
+          "options": [
+            "Tìm đúng lượt và điền NgayTra",
+            "Chọn Đã trả rồi lưu bản ghi",
+            "Tự sửa MaMuonTra thành mã mới",
+            "Thêm lượt mới chỉ để ghi ngày trả"
+          ],
+          "answer": [
+            "Tìm đúng lượt và điền NgayTra",
+            "Chọn Đã trả rồi lưu bản ghi"
+          ],
+          "hint": "Đây là thay đổi của một sự kiện mượn đã có.",
+          "explanation": "Cập nhật đúng lượt giữ nguyên MaMuonTra, bổ sung ngày trả và chọn trạng thái phù hợp."
+        }
+      ]
+    },
+    {
+      "id": "boss",
+      "title": "Boss · Điều hành thư viện",
+      "short": "Boss cuối",
+      "kind": "boss",
+      "subtitle": "Thiết kế và sử dụng đủ ba Form với dữ liệu nhất quán.",
+      "challenges": [
+        {
+          "id": "v2-b1",
+          "type": "select",
+          "title": "Chọn đúng điều khiển",
+          "prompt": "Ghép các trường ở F_MuonTra với điều khiển cần có.",
+          "items": [
+            {
+              "label": "MaMuonTra",
+              "options": [
+                "Text Box chỉ đọc",
+                "Combo Box chọn người",
+                "Combo Box chọn sách"
+              ],
+              "answer": "Text Box chỉ đọc"
+            },
+            {
+              "label": "SoTheTV",
+              "options": [
+                "Text Box nhập họ tên",
+                "Combo Box chọn người",
+                "Text Box nhập mã tự sinh"
+              ],
+              "answer": "Combo Box chọn người"
+            },
+            {
+              "label": "MaSach",
+              "options": [
+                "Combo Box chọn sách",
+                "Text Box nhập tên sách",
+                "Text Box nhập mã tự sinh"
+              ],
+              "answer": "Combo Box chọn sách"
+            },
+            {
+              "label": "TrangThai",
+              "options": [
+                "Combo Box danh sách giá trị",
+                "Text Box nhập tùy ý",
+                "Text Box chỉ đọc"
+              ],
+              "answer": "Combo Box danh sách giá trị"
+            }
+          ],
+          "hint": "Một mã tự sinh, hai khóa ngoại và một danh sách trạng thái.",
+          "explanation": "MaMuonTra chỉ đọc; hai khóa ngoại dùng danh sách tên; TrangThai chọn từ các giá trị quy ước."
+        },
+        {
+          "id": "v2-b2",
+          "type": "single",
+          "title": "Tên nhìn thấy khác giá trị lưu",
+          "prompt": "Combo Box người đọc có hai cột SoTheTV, HoVaTen; Bound Column = 1. Chọn Nguyễn Minh Hà có mã TV006. MƯỢN_TRẢ.SoTheTV lưu gì?",
+          "options": [
+            "TV006",
+            "Nguyễn Minh Hà",
+            "S006",
+            "Số dòng thứ sáu"
+          ],
+          "answer": "TV006",
+          "hint": "Bound Column chọn cột lấy giá trị, không phải cột đang nhìn thấy.",
+          "explanation": "Giá trị lưu là TV006. Hiển thị tên không làm đổi kiểu hoặc ý nghĩa khóa ngoại."
+        },
+        {
+          "id": "v2-b3",
+          "type": "multi",
+          "title": "Các nút làm đúng việc",
+          "prompt": "Chọn hai nhận định đúng.",
+          "options": [
+            "Thêm mới mở bản ghi trống để nhập",
+            "Lưu ghi thay đổi của bản ghi hiện tại",
+            "Bản ghi sau tự tạo một mã thẻ mới",
+            "Đóng luôn xóa dữ liệu vừa nhập"
+          ],
+          "answer": [
+            "Thêm mới mở bản ghi trống để nhập",
+            "Lưu ghi thay đổi của bản ghi hiện tại"
+          ],
+          "hint": "Phân biệt điều hướng với thêm và lưu dữ liệu.",
+          "explanation": "Thêm mới và Lưu là hai thao tác khác nhau. Các nút chuyển bản ghi hoặc đóng Form không phải nút xóa."
+        },
+        {
+          "id": "v2-b4",
+          "type": "order",
+          "title": "Kiểm tra sản phẩm cuối",
+          "prompt": "Sắp xếp một lần kiểm thử đầy đủ.",
+          "items": [
+            {
+              "id": "return",
+              "text": "Tìm lại lượt, cập nhật ngày trả và trạng thái rồi lưu"
+            },
+            {
+              "id": "verify",
+              "text": "Mở bảng MƯỢN_TRẢ, kiểm tra mã thẻ và mã sách được lưu"
+            },
+            {
+              "id": "borrow",
+              "text": "Tạo lượt mượn bằng cách chọn hai tên vừa thêm"
+            },
+            {
+              "id": "masters",
+              "text": "Thêm một người đọc và một sách bằng hai Form danh mục"
+            }
+          ],
+          "answer": [
+            "masters",
+            "borrow",
+            "verify",
+            "return"
+          ],
+          "hint": "Có danh mục trước, có lượt mượn sau, rồi kiểm chứng và cập nhật.",
+          "explanation": "Kết quả cần được đối chiếu trong bảng, gồm cả khóa ngoại và mã lượt mượn giữ nguyên khi cập nhật."
+        },
+        {
+          "id": "v2-b5",
+          "type": "truefalse",
+          "title": "AutoNumber có phải số thứ tự liên tục?",
+          "prompt": "MaMuonTra có các giá trị 1, 2, 4. Vì thiếu số 3 nên em phải sửa mã 4 thành 3.",
+          "answer": "Sai",
+          "hint": "AutoNumber dùng nhận diện bản ghi, không phải số thứ tự để trình bày.",
+          "explanation": "AutoNumber có thể có khoảng trống. Không sửa hoặc cố lấp khoảng trống của mã tự sinh."
+        },
+        {
+          "id": "v2-b6",
+          "type": "select",
+          "title": "Danh mục và lượt mượn",
+          "prompt": "Chọn đúng nơi thực hiện từng việc.",
+          "items": [
+            {
+              "label": "Đổi email của người đọc",
+              "options": [
+                "F_NguoiDoc",
+                "F_Sach",
+                "F_MuonTra"
+              ],
+              "answer": "F_NguoiDoc"
+            },
+            {
+              "label": "Nhập một đầu sách mới",
+              "options": [
+                "F_NguoiDoc",
+                "F_Sach",
+                "F_MuonTra"
+              ],
+              "answer": "F_Sach"
+            },
+            {
+              "label": "Ghi nhận ngày trả sách",
+              "options": [
+                "F_NguoiDoc",
+                "F_Sach",
+                "F_MuonTra"
+              ],
+              "answer": "F_MuonTra"
+            }
+          ],
+          "hint": "Thông tin thuộc bảng nào thì sử dụng Form gắn với bảng đó.",
+          "explanation": "Ba Form phục vụ ba loại bản ghi; quan hệ nối dữ liệu nhưng không đổi nguồn của từng Form."
+        },
+        {
+          "id": "v2-g1",
+          "type": "single",
+          "title": "Vàng · Hai người trùng tên",
+          "prompt": "Danh sách người đọc có hai bạn trùng họ tên. Cải tiến phù hợp nhất là gì?",
+          "options": [
+            "Hiện thêm số thẻ để phân biệt",
+            "Dùng họ tên làm khóa chính",
+            "Lưu cả họ tên vào SoTheTV",
+            "Chọn người đầu tiên cho nhanh"
+          ],
+          "answer": "Hiện thêm số thẻ để phân biệt",
+          "hint": "Nhận diện người bằng khóa duy nhất dù giao diện ưu tiên tên.",
+          "explanation": "Có thể hiển thị thêm lớp hoặc số thẻ trong danh sách, trong khi Bound Column vẫn trả số thẻ.",
+          "advanced": true
+        },
+        {
+          "id": "v2-g2",
+          "type": "truefalse",
+          "title": "Vàng · Đổi nhãn có đổi liên kết?",
+          "prompt": "Đổi Label “Mã sách” thành “Tên sách” sẽ tự biến ô nhập thành Combo Box liên kết đúng bảng SÁCH.",
+          "answer": "Sai",
+          "hint": "Nhãn chỉ là chữ hướng dẫn bên cạnh điều khiển.",
+          "explanation": "Cần dùng Combo Box và cấu hình Record Source, Control Source, Row Source, Bound Column. Đổi nhãn không thực hiện các việc đó.",
+          "advanced": true
+        }
+      ]
+    }
+  ],
+  "media": {
+    "create": {
+      "id": "dEaQIrw3CZY",
+      "title": "Access: Creating Forms",
+      "summary": "Tạo Form từ bảng và chọn các chế độ xem."
+    },
+    "use": {
+      "id": "uTRdmSQjjm8",
+      "title": "Access: Working with Forms",
+      "summary": "Di chuyển, thêm và sửa bản ghi qua Form."
+    }
+  },
+  "nativeVideos": [
+    {
+      "section": 1,
+      "title": "Tạo khung Form bằng Wizard",
+      "summary": "Ví dụ với MƯỢN_TRẢ; lặp lại cùng quy trình cho NGƯỜI ĐỌC và SÁCH, theo bảng tên Form và nguồn ở trên.",
+      "src": "assets/video/three-forms-wizard.mp4",
+      "poster": "assets/access/wizard-fields.png"
+    },
+    {
+      "section": 1,
+      "title": "AutoNumber, Combo Box và nút Lưu",
+      "summary": "Xem Locked, Tab Stop, Bound Column, Value List và hành động SaveRecord trong Macro Builder.",
+      "src": "assets/video/three-forms-config.mp4",
+      "poster": "assets/access/v2-combo.png"
+    },
+    {
+      "section": 2,
+      "title": "Dùng đủ ba Form từ đầu đến cuối",
+      "summary": "Thêm người đọc, thêm sách, chọn tên để mượn, cập nhật khi trả và kiểm tra mã thực sự trong bảng.",
+      "src": "assets/video/three-forms-use.mp4",
+      "poster": "assets/access/v2-loan.png"
+    }
+  ]
 };

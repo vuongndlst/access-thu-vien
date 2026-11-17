@@ -1,0 +1,79 @@
+WEBVTT
+
+00:00:00.800 --> 00:00:04.191
+Trong bài này, các em sẽ tạo ba biểu mẫu để quản lý thư viện.
+
+00:00:04.561 --> 00:00:08.126
+Trước hết, mở cơ sở dữ liệu đã có đủ ba bảng và hai quan hệ.
+
+00:00:08.496 --> 00:00:10.757
+Ở khung bên trái, bấm chọn bảng mượn trả.
+
+00:00:11.126 --> 00:00:13.735
+Đây sẽ là nguồn dữ liệu của biểu mẫu đầu tiên.
+
+00:00:17.733 --> 00:00:20.081
+Bây giờ, mở thẻ Create trên thanh công cụ.
+
+00:00:20.450 --> 00:00:22.537
+Thẻ này chứa các lệnh tạo đối tượng mới.
+
+00:00:22.907 --> 00:00:27.863
+Hãy quan sát tên bảng đang được chọn trước khi tiếp tục, để tránh tạo biểu mẫu từ nhầm bảng.
+
+00:00:34.066 --> 00:00:36.240
+Trong nhóm Forms, chọn Form Wizard.
+
+00:00:36.609 --> 00:00:39.131
+Đây là trình hướng dẫn tạo biểu mẫu theo từng bước.
+
+00:00:39.501 --> 00:00:44.370
+Chúng ta sẽ lần lượt chọn bảng nguồn, chọn các trường, chọn bố cục và đặt tên biểu mẫu.
+
+00:00:50.399 --> 00:00:53.616
+Kiểm tra ô Tables and Queries đang chỉ đến bảng mượn trả.
+
+00:00:53.986 --> 00:00:58.334
+Bấm nút hai dấu lớn hơn để chuyển toàn bộ bảy trường sang danh sách Selected Fields.
+
+00:00:58.703 --> 00:01:03.138
+Các em hãy đếm lại: mã mượn trả, số thẻ, mã sách, ba trường ngày và trạng thái.
+
+00:01:07.132 --> 00:01:09.828
+Khi danh sách bên phải đã đủ bảy trường, bấm Next.
+
+00:01:10.197 --> 00:01:12.893
+Nếu còn thiếu trường, quay lại để bổ sung ngay.
+
+00:01:13.262 --> 00:01:18.567
+Ở bước này, chúng ta mới chọn những trường xuất hiện trên giao diện, chưa thay đổi dữ liệu trong bảng.
+
+00:01:23.399 --> 00:01:25.747
+Chọn bố cục Columnar, rồi bấm Next.
+
+00:01:26.116 --> 00:01:31.073
+Bố cục này hiển thị thông tin của một bản ghi theo từng dòng, phù hợp để xem và nhập một lượt mượn.
+
+00:01:31.442 --> 00:01:34.225
+Các em hãy đối chiếu phần xem trước trước khi chuyển bước.
+
+00:01:39.732 --> 00:01:44.340
+Đặt tên biểu mẫu là F gạch dưới MuonTra, viết liền và không dấu, đúng như trên màn hình.
+
+00:01:44.710 --> 00:01:46.971
+Tiền tố F giúp nhận ra đây là một Form.
+
+00:01:47.340 --> 00:01:50.036
+Tên biểu mẫu và tên bảng nguồn là hai tên khác nhau.
+
+00:01:55.998 --> 00:01:57.564
+Bấm Finish để mở biểu mẫu.
+
+00:01:57.933 --> 00:02:00.107
+Dữ liệu đang thấy đến từ bảng mượn trả.
+
+00:02:00.477 --> 00:02:07.259
+Sau đó, thực hiện lại các bước vừa học với bảng người đọc để tạo F gạch dưới NguoiDoc, và với bảng sách để tạo F gạch dưới Sach.
+
+00:02:07.629 --> 00:02:11.107
+Hãy dừng video và tự tạo đủ ba Form trước khi xem phần cấu hình.

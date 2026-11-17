@@ -1,0 +1,232 @@
+WEBVTT
+
+00:00:00.800 --> 00:00:06.800
+Chúng ta sẽ làm một quy trình hoàn chỉnh: thêm người đọc, thêm sách, lập lượt mượn và cập nhật khi trả sách.
+
+00:00:07.170 --> 00:00:09.257
+Mở Form người đọc, rồi bấm Thêm mới.
+
+00:00:09.626 --> 00:00:13.887
+Nút này chuyển đến bản ghi mới, chưa có nghĩa là mọi thông tin đã được lưu hợp lệ.
+
+00:00:17.867 --> 00:00:22.301
+Nhập số thẻ mới là T V không không sáu, cùng họ tên và các thông tin còn lại.
+
+00:00:22.671 --> 00:00:26.584
+Số thẻ ở bảng người đọc là Short Text, nên các em nhập một mã duy nhất.
+
+00:00:26.954 --> 00:00:29.301
+Không dùng số thẻ đã có cho một người khác.
+
+00:00:34.033 --> 00:00:36.555
+Kiểm tra các ô vừa nhập, rồi bấm Lưu.
+
+00:00:36.925 --> 00:00:39.272
+Thao tác này ghi người đọc mới vào bảng người đọc.
+
+00:00:39.642 --> 00:00:44.251
+Nếu có lỗi trùng khóa hoặc thiếu dữ liệu bắt buộc, hãy sửa thông tin trước khi tiếp tục.
+
+00:00:50.366 --> 00:00:53.236
+Bấm Bản ghi trước để xem người đọc đã lưu ở trước đó.
+
+00:00:53.605 --> 00:00:55.692
+Quan sát số thẻ và họ tên thay đổi.
+
+00:00:56.062 --> 00:01:00.062
+Nút điều hướng giúp xem bản ghi khác; nó không phải là nút tạo thêm người đọc.
+
+00:01:06.699 --> 00:01:09.134
+Bấm Bản ghi sau để trở lại người đọc vừa thêm.
+
+00:01:09.504 --> 00:01:12.982
+Kiểm tra số thẻ T V không không sáu và thông tin đã lưu.
+
+00:01:13.352 --> 00:01:17.786
+Đây là một cách tự kiểm tra rằng bản ghi vẫn có thể mở lại sau khi chuyển đi.
+
+00:01:22.966 --> 00:01:25.575
+Tiếp theo, mở Form sách và bấm Thêm mới.
+
+00:01:25.944 --> 00:01:29.944
+Chúng ta cần có sách trong danh mục trước khi chọn sách đó cho một lượt mượn.
+
+00:01:30.314 --> 00:01:32.923
+Mỗi Form đang làm việc với bảng nguồn tương ứng của nó.
+
+00:01:39.233 --> 00:01:42.885
+Nhập mã sách S không không sáu và các thông tin của đầu sách mới.
+
+00:01:43.254 --> 00:01:44.559
+Mã sách phải duy nhất.
+
+00:01:44.928 --> 00:01:49.363
+Năm xuất bản và số lượng tồn dùng kiểu số nguyên; không nhập phần thập phân vào hai trường này.
+
+00:01:55.399 --> 00:01:57.399
+Bấm Lưu để ghi đầu sách vào bảng sách.
+
+00:01:57.769 --> 00:02:02.899
+Sau bước này, mã S không không sáu mới là một mã hợp lệ để được tham chiếu trong bảng mượn trả.
+
+00:02:03.269 --> 00:02:06.399
+Hãy dừng video nếu các em chưa hoàn thành hai danh mục.
+
+00:02:11.732 --> 00:02:14.167
+Sau khi lưu, bấm Đóng để đóng Form sách.
+
+00:02:14.537 --> 00:02:16.971
+Đóng Form không phải là xóa bảng hoặc xóa dữ liệu.
+
+00:02:17.341 --> 00:02:20.732
+Khi tự làm bài, hãy bấm Lưu và kiểm tra kết quả trước khi đóng.
+
+00:02:28.065 --> 00:02:29.196
+Mở Form mượn trả.
+
+00:02:29.565 --> 00:02:33.218
+Chúng ta sẽ dùng đúng người đọc và sách vừa thêm để tạo một lượt mượn.
+
+00:02:33.587 --> 00:02:39.239
+Nếu danh sách đang mở từ trước, hãy cập nhật lại danh sách hoặc mở lại Form để thấy dữ liệu mới.
+
+00:02:44.398 --> 00:02:45.355
+Bấm Thêm mới.
+
+00:02:45.724 --> 00:02:48.420
+Bỏ qua mã mượn trả vì Access sẽ tự cấp mã.
+
+00:02:48.790 --> 00:02:53.485
+Trong bản ghi mẫu, mã sau khi lưu là mười hai; máy của các em có thể là số khác.
+
+00:02:53.855 --> 00:02:57.768
+Điều cần kiểm tra là mã được sinh tự động, không phải giống đúng số trong video.
+
+00:03:01.765 --> 00:03:04.200
+Mở danh sách Người đọc bằng mũi tên ở cuối ô.
+
+00:03:04.569 --> 00:03:07.265
+Quan sát danh sách hiện họ tên kèm số thẻ.
+
+00:03:07.635 --> 00:03:11.287
+Cách này giúp tìm đúng người, nhất là khi hai người có cùng họ tên.
+
+00:03:18.032 --> 00:03:21.075
+Chọn Nguyễn Minh Hà, có số thẻ T V không không sáu.
+
+00:03:21.445 --> 00:03:23.793
+Trên giao diện, chúng ta nhìn thấy tên dễ đọc.
+
+00:03:24.162 --> 00:03:28.075
+Ở trường số thẻ của lượt mượn, giá trị được lưu sẽ là mã thẻ tương ứng.
+
+00:03:34.365 --> 00:03:35.495
+Mở danh sách sách.
+
+00:03:35.865 --> 00:03:40.473
+Hai đầu sách có thể trùng tên, vì vậy các em hãy nhìn thêm mã phía sau tên để phân biệt.
+
+00:03:40.843 --> 00:03:43.886
+Không chọn chỉ dựa vào tên khi danh mục có các dòng giống nhau.
+
+00:03:50.698 --> 00:03:53.133
+Chọn Khám phá dữ liệu, mã S không không sáu.
+
+00:03:53.502 --> 00:03:55.502
+Kiểm tra đúng mã vừa thêm ở Form sách.
+
+00:03:55.872 --> 00:04:01.176
+Combo Box hiển thị tên kèm mã, nhưng cột được ràng buộc vẫn lấy mã S không không sáu để lưu.
+
+00:04:06.964 --> 00:04:08.790
+Nhập ngày mượn và hạn trả phù hợp.
+
+00:04:09.160 --> 00:04:13.247
+Trong ví dụ, ngày mượn là mười ba tháng mười một, hạn trả là hai mươi tháng mười một.
+
+00:04:13.617 --> 00:04:15.877
+Sách chưa được trả thì để trống ngày trả.
+
+00:04:16.247 --> 00:04:19.290
+Máy trong video hiển thị ngày theo thứ tự tháng, ngày, năm.
+
+00:04:23.264 --> 00:04:24.569
+Mở danh sách trạng thái.
+
+00:04:24.938 --> 00:04:28.243
+Các em sẽ thấy hai giá trị chuẩn là đang mượn và đã trả.
+
+00:04:28.612 --> 00:04:32.525
+Chúng ta chọn từ danh sách thay vì tự gõ những cách diễn đạt khác nhau.
+
+00:04:39.597 --> 00:04:41.250
+Chọn Đang mượn cho lượt vừa tạo.
+
+00:04:41.619 --> 00:04:46.576
+Kiểm tra lại: đúng người đọc, đúng sách, có ngày mượn và hạn trả, ngày trả còn trống.
+
+00:04:46.945 --> 00:04:49.293
+Hãy dừng một chút để đối chiếu trước khi lưu.
+
+00:04:55.864 --> 00:04:56.647
+Bấm Lưu.
+
+00:04:57.016 --> 00:05:00.495
+Access tự sinh mã mượn trả; ở ví dụ này là mười hai.
+
+00:05:00.864 --> 00:05:06.081
+Các em hãy ghi nhớ mã trên máy của mình để mở lại đúng lượt khi cần cập nhật việc trả sách.
+
+00:05:12.197 --> 00:05:15.154
+Khi người đọc trả sách, mở lại đúng lượt mượn đã lưu.
+
+00:05:15.523 --> 00:05:17.871
+Không tạo lượt mượn mới chỉ để ghi việc trả.
+
+00:05:18.241 --> 00:05:21.893
+Ở bản ghi mẫu, nhập ngày trả là mười bốn tháng mười một vào ô ngày trả.
+
+00:05:28.464 --> 00:05:31.159
+Mở dropdown trạng thái để chuyển lượt này sang đã trả.
+
+00:05:31.529 --> 00:05:34.399
+Việc đổi trạng thái phải đi cùng thông tin ngày trả phù hợp.
+
+00:05:34.768 --> 00:05:37.203
+Hãy quan sát mã lượt mượn vẫn giữ nguyên.
+
+00:05:44.664 --> 00:05:46.664
+Chọn Đã trả từ danh sách cố định.
+
+00:05:47.033 --> 00:05:51.555
+Cách chọn này giữ dữ liệu thống nhất, giúp việc lọc hoặc thống kê sau này chính xác hơn.
+
+00:05:51.925 --> 00:05:54.794
+Chúng ta đang cập nhật lượt cũ, không thêm một dòng mới.
+
+00:06:00.864 --> 00:06:03.038
+Bấm Lưu để ghi ngày trả và trạng thái mới.
+
+00:06:03.407 --> 00:06:06.364
+Kiểm tra mã mượn trả vẫn là mười hai trong bản ghi mẫu.
+
+00:06:06.733 --> 00:06:11.168
+Mã khóa chính giúp nhận diện đúng lượt, kể cả khi nội dung của lượt đó được cập nhật.
+
+00:06:17.130 --> 00:06:20.261
+Cuối cùng, mở bảng mượn trả để kiểm chứng dữ liệu thật.
+
+00:06:20.630 --> 00:06:22.543
+Tìm đến đúng mã lượt vừa thao tác.
+
+00:06:22.913 --> 00:06:27.435
+Đối chiếu các cột số thẻ, mã sách, ngày trả và trạng thái với thông tin trên Form.
+
+00:06:33.397 --> 00:06:39.484
+Kết quả mẫu lưu số thẻ T V không không sáu và mã sách S không không sáu, cùng ngày trả và trạng thái đã trả.
+
+00:06:39.854 --> 00:06:43.419
+Tên giúp chúng ta chọn thuận tiện; mã giữ liên kết giữa các bảng.
+
+00:06:43.788 --> 00:06:48.571
+Bây giờ, hãy tự làm lại một lượt với dữ liệu khác, rồi trả lời checkpoint trên web.

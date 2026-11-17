@@ -1,0 +1,151 @@
+WEBVTT
+
+00:00:00.800 --> 00:00:04.626
+Sau khi có khung biểu mẫu, chúng ta cần cấu hình cách nhập dữ liệu.
+
+00:00:04.996 --> 00:00:07.952
+Trên Form mượn trả, mở nút View ở góc trên bên trái.
+
+00:00:08.322 --> 00:00:13.887
+Hãy phân biệt: Form View dùng để nhập dữ liệu; Design View dùng để chỉnh thiết kế và thuộc tính điều khiển.
+
+00:00:17.867 --> 00:00:18.997
+Chọn Design View.
+
+00:00:19.367 --> 00:00:22.932
+Nếu chưa thấy bảng thuộc tính, bấm phím F bốn để mở Property Sheet.
+
+00:00:23.301 --> 00:00:28.954
+Trong phần này, mẫu trên màn hình đã có các điều khiển; chúng ta sẽ lần lượt kiểm tra các thiết lập quan trọng.
+
+00:00:34.200 --> 00:00:36.721
+Bấm vào ô dữ liệu mã mượn trả ở bên phải.
+
+00:00:37.091 --> 00:00:39.091
+Đừng chọn nhãn mô tả bên trái.
+
+00:00:39.461 --> 00:00:44.243
+Hãy nhìn tên điều khiển ở đầu Property Sheet để biết mình đang sửa đúng ô nhập liệu.
+
+00:00:50.533 --> 00:00:54.881
+Ở thẻ Data, Control Source phải là MaMuonTra để ô gắn với đúng trường.
+
+00:00:55.250 --> 00:00:57.772
+Đặt Locked bằng Yes để người dùng không sửa mã.
+
+00:00:58.141 --> 00:01:03.620
+Việc sinh số tự động đến từ kiểu AutoNumber của trường trong bảng, chứ không phải do thuộc tính Locked.
+
+00:01:07.599 --> 00:01:08.817
+Chuyển sang thẻ Other.
+
+00:01:09.186 --> 00:01:13.360
+Đặt Tab Stop bằng No để khi bấm Tab, con trỏ bỏ qua ô mã tự sinh.
+
+00:01:13.730 --> 00:01:16.165
+Mã có thể không liên tiếp sau một lần hủy nhập.
+
+00:01:16.534 --> 00:01:19.143
+Các em không sửa mã để lấp những số bị thiếu.
+
+00:01:23.866 --> 00:01:26.736
+Tiếp theo, chọn Combo Box dùng để chọn sách.
+
+00:01:27.105 --> 00:01:32.323
+Nếu Form mới tạo còn là Text Box, hãy đổi điều khiển này sang Combo Box trong Design View.
+
+00:01:32.692 --> 00:01:36.779
+Mục tiêu là chọn sách từ danh mục có sẵn, giúp hạn chế gõ sai mã.
+
+00:01:40.766 --> 00:01:44.679
+Ở thẻ Data, Control Source là MaSach, đây là trường nhận giá trị.
+
+00:01:45.049 --> 00:01:48.266
+Bound Column bằng một để lấy mã ở cột đầu của danh sách.
+
+00:01:48.636 --> 00:01:52.809
+Đặt Limit To List bằng Yes để chỉ chấp nhận sách có trong danh mục.
+
+00:01:57.033 --> 00:02:00.946
+Row Source cung cấp hai cột: mã sách và phần tên hiển thị.
+
+00:02:01.315 --> 00:02:06.011
+Có thể ghép thêm mã sau tên, như mẫu trên màn hình, để phân biệt hai sách trùng tên.
+
+00:02:06.381 --> 00:02:10.120
+Chọn tên để thao tác thuận tiện, nhưng giá trị lưu vẫn là mã sách.
+
+00:02:14.099 --> 00:02:16.708
+Ở thẻ Format, đặt Column Count bằng hai.
+
+00:02:17.078 --> 00:02:22.817
+Column Widths bằng không xăng ti mét, chấm phẩy, sáu xăng ti mét, để ẩn cột mã và hiện cột tên.
+
+00:02:23.186 --> 00:02:29.186
+Làm tương tự với người đọc: danh sách lấy số thẻ và họ tên, nhưng Control Source phải là SoTheTV.
+
+00:02:33.166 --> 00:02:35.253
+Bây giờ chọn Combo Box trạng thái.
+
+00:02:35.623 --> 00:02:38.579
+Danh sách này không lấy từ bảng sách hoặc bảng người đọc.
+
+00:02:38.949 --> 00:02:43.905
+Chúng ta dùng một danh sách giá trị cố định, vì trạng thái trong bài chỉ có đang mượn và đã trả.
+
+00:02:49.433 --> 00:02:52.302
+Ở thẻ Data, Control Source là TrangThai.
+
+00:02:52.672 --> 00:02:54.759
+Row Source Type chọn Value List.
+
+00:02:55.128 --> 00:02:59.650
+Row Source gồm hai giá trị đang mượn và đã trả, ngăn cách bằng dấu chấm phẩy.
+
+00:03:00.020 --> 00:03:04.628
+Đặt Limit To List bằng Yes để dữ liệu không bị nhập thành nhiều cách viết khác nhau.
+
+00:03:08.599 --> 00:03:10.252
+Tiếp theo, chọn nút Lưu.
+
+00:03:10.621 --> 00:03:14.795
+Một nút lệnh cần có hành động khi được bấm; chỉ đặt chữ Lưu trên nút thì chưa đủ.
+
+00:03:15.165 --> 00:03:18.208
+Các em hãy kiểm tra đúng nút trước khi mở phần sự kiện.
+
+00:03:24.532 --> 00:03:25.663
+Mở thẻ Event.
+
+00:03:26.032 --> 00:03:28.467
+Dòng On Click là hành động chạy khi bấm nút.
+
+00:03:28.837 --> 00:03:34.054
+Trong mẫu này, On Click gắn với Embedded Macro, tức là macro được lưu ngay trong biểu mẫu.
+
+00:03:40.799 --> 00:03:44.277
+Bấm nút ba chấm ở cuối dòng On Click để mở Macro Builder.
+
+00:03:44.647 --> 00:03:51.777
+Nếu đang tạo nút mới, các em có thể dùng trình hướng dẫn nút lệnh và chọn chức năng lưu bản ghi, rồi kiểm tra lại hành động tại đây.
+
+00:03:57.132 --> 00:04:00.871
+Nút Lưu sử dụng RunMenuCommand, với Command là SaveRecord.
+
+00:04:01.241 --> 00:04:03.936
+Mẫu có điều kiện chỉ lưu khi bản ghi đang thay đổi.
+
+00:04:04.306 --> 00:04:10.393
+Chú ý phân biệt: lưu bản ghi là ghi dữ liệu vào bảng; lưu thiết kế Form là ghi lại bố cục và các thuộc tính.
+
+00:04:14.365 --> 00:04:17.843
+Lưu macro, đóng cửa sổ macro và lưu thiết kế biểu mẫu.
+
+00:04:18.213 --> 00:04:22.213
+Cả ba Form cần có thêm mới, lưu, bản ghi trước, bản ghi sau và đóng.
+
+00:04:22.582 --> 00:04:24.495
+Kiểm tra từng nút trong Form View.
+
+00:04:24.865 --> 00:04:30.865
+Hãy dừng video để tự thử: ô mã mượn trả phải chỉ đọc; hai danh mục và trạng thái phải chọn được từ danh sách.

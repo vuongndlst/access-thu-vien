@@ -71,6 +71,13 @@ Ví dụ kiểm chứng khi quay bài thực hành. Chọn một họ tên trên
 
 Bài Form được mở rộng bắt buộc cho F_NguoiDoc (NGƯỜI ĐỌC), F_Sach (SÁCH), F_MuonTra (MƯỢN_TRẢ). AutoNumber chỉ đọc; Combo Box hiện tên lưu mã; trạng thái dùng Value List; mỗi Form có năm nút lệnh bằng embedded macro. Giữ mã bài và hồ sơ cũ, bổ sung các nhiệm vụ mới; chứng chỉ của bản đầy đủ có mã và ngày cấp riêng.
 
-Ảnh mới chụp trực tiếp 1920×1080 tại `_planning/forms_v2/captures`, cắt không nội suy. Ba video mới được biên tập từ các đoạn quay thật, giữ 1920×1080/30 fps, thêm chú thích và highlight; không có lời đọc. Các đoạn đưa lên web được kiểm tra chỉ có giao diện Access. Tệp mẫu Access giữ cục bộ cho giáo viên.
+Ảnh mới chụp trực tiếp 1920×1080 tại `_planning/forms_v2/captures`, cắt không nội suy. Ba video mới được biên tập từ các đoạn quay thật, giữ 1920×1080/30 fps, thêm chú thích và highlight; có lời đọc tiếng Việt bằng VieNeu-TTS (giọng dựng sẵn Hải Đăng), nhịp chậm, khoảng nghỉ và phụ đề. Các đoạn đưa lên web được kiểm tra chỉ có giao diện Access. Tệp mẫu Access giữ cục bộ cho giáo viên.
 
 Nguồn Microsoft về nút lệnh và macro: [Use a command button](https://support.microsoft.com/en-us/access/use-a-command-button-to-start-an-action-or-a-series-of-actions), [Create a UI macro](https://support.microsoft.com/en-us/access/create-a-user-interface-ui-macro), [RunMenuCommand](https://learn.microsoft.com/en-us/office/client-developer/access/desktop-database-reference/runmenucommand-macro-action). Nguồn về cách cột hiển thị khác cột lưu: [BoundColumn](https://learn.microsoft.com/en-us/office/vba/api/access.combobox.boundcolumn). Nút Đóng trong mẫu dùng lệnh Close tích hợp; nút Lưu dùng SaveRecord, không lưu thiết kế thay cho dữ liệu.
+
+## Bản lồng tiếng 17/11/2026
+
+- [VieNeu-TTS](https://github.com/pnnbao97/VieNeu-TTS), SDK 3.8.4, v3 Turbo, ONNX CPU; giọng dựng sẵn Hải Đăng. Lời đọc AI được tổng hợp tại máy; không dùng mẫu giọng của giáo viên/học sinh. Mã SDK: Apache-2.0. Các tệp mô hình giữ trong bộ nhớ đệm riêng, không đưa lên web.
+- Cảnh quay Access gốc được làm chậm 1,65 lần, thêm thời gian giữ khung hình và khoảng nghỉ 2,8 giây sau từng bước. Lời đọc điều chỉnh nhịp ở 0,92, phụ đề căn theo từng câu âm thanh tổng hợp. Không dùng cảnh mô phỏng thay cho cảnh quay Access.
+- [Teach](https://github.com/alexknowshtml/claude-skills/tree/main/teach): áp dụng câu hỏi giải thích, phản hồi và thử lại theo từng phần. Không coi việc xem video là bằng chứng học sinh đã hiểu; nhiệm vụ và checkpoint của bài vẫn giữ nguyên.
+- [Anatomy](https://github.com/wheresryan22/anatomy), MIT: dùng bộ tạo hình isometric để dựng tủ thẻ tương tác (55 chi tiết kết cấu), giải thích chọn tên và ghi mã duy nhất. Đây là mô hình giải thích, không phải giao diện Access.
